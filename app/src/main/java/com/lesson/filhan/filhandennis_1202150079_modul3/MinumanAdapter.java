@@ -14,18 +14,18 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by ASUS on 24/02/2018.
+ * MinumanAdapter digunakan untuk penghubung antara kompulan data logic
+ * menjadi kumpulan komponen view (RecyclerView Item)
  */
 
 
 public class MinumanAdapter extends RecyclerView.Adapter<MinumanAdapter.MinumanViewHolder>{
 
+    //ArrayList digunakan untuk menampung kumpulan data dengan objek sama
     public ArrayList<MinumanItem> datas;
-
+    //Konstruktor untuk memasukkan kumpulan data
     public MinumanAdapter(ArrayList<MinumanItem> datas) {
         this.datas = datas;
-
-
         Log.d("JUMLAH_ARRAYLIST","Items: "+getItemCount());
     }
 
@@ -38,16 +38,25 @@ public class MinumanAdapter extends RecyclerView.Adapter<MinumanAdapter.MinumanV
 
     @Override
     public void onBindViewHolder(MinumanViewHolder holder, int position) {
+        //Position = 1 Object Minuman
         final MinumanItem item = datas.get(position);
+        //Memberikan Nilai ke Objek Minuman berdasrkan posisi
         holder.bindTo(item);
-
+        //Memberikan Aksi terhadap baris komponen item
+        //Aksi pindah ke activiy lain = deskripsi item
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Mmbuat Intent
                 Intent go = new Intent(view.getContext().getApplicationContext(),DetailMenu.class);
+                //Membuat nilai yang akan dilempar ke intent tujuan
+                //Judul
                 go.putExtra("etitle",item.getNama());
+                //Deskripsi
                 go.putExtra("edesc",item.getDeskripsi());
+                //Gambar
                 go.putExtra("eimg",item.getGambar());
+                //Pergi ke Intent Tujuan
                 view.getContext().startActivity(go);
             }
         });
@@ -58,6 +67,10 @@ public class MinumanAdapter extends RecyclerView.Adapter<MinumanAdapter.MinumanV
         return datas.size();
     }
 
+    /*
+    * Class ViewHolder yang digunakan untuk mendefinisikan apa bagaimanan
+    * dan apa saja yang bisa dilakukan oleh tiap baris item di recycler view
+    */
     class MinumanViewHolder extends RecyclerView.ViewHolder{
 
         private TextView mLblMinumanJudul;
@@ -66,6 +79,7 @@ public class MinumanAdapter extends RecyclerView.Adapter<MinumanAdapter.MinumanV
         private Context mContext;
         private MinumanItem mCurrentMinuman;
 
+        //Konstruktor untuk mengambil komponen view
         public MinumanViewHolder(View itemView) {
             super(itemView);
             mLblMinumanJudul = (TextView)itemView.findViewById(R.id.lblItemJudul);
@@ -73,6 +87,7 @@ public class MinumanAdapter extends RecyclerView.Adapter<MinumanAdapter.MinumanV
             mLblMinumanImg = (ImageView)itemView.findViewById(R.id.lblItemImg);
         }
 
+        //Method untuk melakukan inisialisasi nilai ke komponen view
         public void bindTo(MinumanItem minuman){
             mCurrentMinuman = minuman;
             mLblMinumanImg.setImageResource(minuman.getGambar());

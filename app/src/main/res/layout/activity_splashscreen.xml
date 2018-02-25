@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#dcdcdc"
+    android:background="@color/colorPrimary"
     tools:context="com.lesson.filhan.filhandennis_1202150079_modul3.Splashscreen">
 
     <ProgressBar
@@ -22,7 +22,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="Loading ..."
-        android:textColor="#545454"
+        android:textColor="#f5f5f5"
         android:textSize="26sp" />
 
 </RelativeLayout>

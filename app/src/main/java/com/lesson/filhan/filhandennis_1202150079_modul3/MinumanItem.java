@@ -5,7 +5,11 @@ import android.content.Intent;
 import android.support.annotation.DrawableRes;
 
 /**
- * Created by ASUS on 24/02/2018.
+ * MinumanItem merupakan class yang digunakan sebagai Model Data
+ * dari Objek Minuman
+ * Bagaimana bentuk minumanannya, terdapat apa saja pada data minuman tersebut
+ * Setter dan Getter dari Nama, Info(Penggalan Teks yang tampil di item recycler view),
+ * Deskripsi, Gambar
  */
 
 public class MinumanItem {
